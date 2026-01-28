@@ -69,16 +69,8 @@ def get_counts_and_rate_of_survivors(grouped_df):
     return result
 
 # Get counts and survival rate by age group
-survivors_by_age_and_count = df_clean.groupby('age_group')[['Survived']].agg(
-        total_survived = ("Survived", 'sum'),
-        total_count = ("Survived", 'count'),
-    )
-
-survivors_by_age_and_count['survival_percentage'] = (
-        (survivors_by_age_and_count["Survived"].mean() * 100)
-        .round(0)
-        .astype(int)
-        .astype(str) + '%'
+survivors_by_age_and_count = get_counts_and_rate_of_survivors(
+    df_clean.groupby('age_group')
     )
 
 print(survivors_by_age_and_count)
