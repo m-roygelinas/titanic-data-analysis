@@ -91,3 +91,27 @@ plt.xticks(rotation=45, ha='right')
 plt.tight_layout()
 plt.legend()
 plt.show()
+
+# -----------------------------------------------------------------------------
+# Get counts and survival rate by sex and plot graph
+# -----------------------------------------------------------------------------
+
+# Get counts and survival rate by sex
+survivors_by_sex_and_count = get_counts_and_rate_of_survivors(
+    df_clean.groupby('Sex'),
+    'Survived'
+    )
+print(survivors_by_sex_and_count)
+
+# Plot survivors by sex
+plt.bar(
+    x=survivors_by_sex_and_count.index,
+    height=survivors_by_sex_and_count['total_survived']
+    )
+plt.xlabel('Sex')
+plt.ylabel('Number of Survivors')
+plt.title('Survivors by Sex')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.legend()
+plt.show()
