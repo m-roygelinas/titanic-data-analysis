@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import datetime as dt
 
-df = pd.read_csv("titanic.csv")
+df = pd.read_csv("data/titanic.csv")
 
 # -----------------------------------------------------------------------------
 # Get basic info about the dataframe
@@ -89,7 +89,6 @@ plt.ylabel('Number of Survivors')
 plt.title('Survivors by Age Group')
 plt.xticks(rotation=45, ha='right')
 plt.tight_layout()
-plt.legend()
 plt.show()
 
 # -----------------------------------------------------------------------------
@@ -98,7 +97,7 @@ plt.show()
 
 # Get counts and survival rate by sex
 survivors_by_sex_and_count = get_counts_and_rate_of_survivors(
-    df_clean.groupby('Sex')
+    df.groupby('Sex')
     )
 print(survivors_by_sex_and_count)
 
@@ -111,7 +110,6 @@ plt.xlabel('Sex')
 plt.ylabel('Number of Survivors')
 plt.title('Survivors by Sex')
 plt.tight_layout()
-plt.legend()
 plt.show()
 
 # -----------------------------------------------------------------------------
@@ -120,7 +118,7 @@ plt.show()
 
 # Get counts and survival rate by class
 survivors_by_class_and_count = get_counts_and_rate_of_survivors(
-    df_clean.groupby('Pclass')
+    df.groupby('Pclass')
     )
 print(survivors_by_class_and_count)
 
@@ -134,5 +132,4 @@ plt.ylabel('Percentage of Survivors')
 plt.title('Percentage of Survivors by Class')
 plt.xticks(np.arange(0, 4, 1))
 plt.tight_layout()
-plt.legend()
 plt.show()
