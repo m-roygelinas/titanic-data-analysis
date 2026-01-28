@@ -31,3 +31,7 @@ survivors_by_age = df.groupby("Age")['Survived'].sum()
 
 # Replace \N with NaN
 df['Age'] = df['Age'].replace('\\N', np.nan)
+
+# Ensure Age column is numeric
+if not df['Age'].dtype.is_dtype(np.number):
+    df['Age'] = pd.to_numeric(df['Age'], errors='coerce')
