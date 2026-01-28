@@ -40,3 +40,10 @@ if df['Age'].isna().sum() != 0:
     df_clean = df.dropna(subset=['Age'])
 else:
     df_clean = df.copy()
+
+# Define bin edges and labels
+bins = [0, 18, 30, 45, 55, 65, float('inf')]
+labels = ['0-18', '19-30', '31-45', '46-55', '56-65', '66+']
+
+# Create age_group column
+df_clean['age_group'] = pd.cut(df_clean['Age'], bins=bins, labels=labels, right=True)
