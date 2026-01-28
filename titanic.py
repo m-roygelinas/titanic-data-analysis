@@ -47,3 +47,7 @@ labels = ['0-18', '19-30', '31-45', '46-55', '56-65', '66+']
 
 # Create age_group column
 df_clean['age_group'] = pd.cut(df_clean['Age'], bins=bins, labels=labels, right=True)
+
+# Group survivors by age group
+survivors_by_age_groups = df_clean.groupby('age_group')[['Survived']].sum()
+
