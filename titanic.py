@@ -51,6 +51,23 @@ df_clean['age_group'] = pd.cut(df_clean['Age'], bins=bins, labels=labels, right=
 # Group survivors by age group
 survivors_by_age_groups = df_clean.groupby('age_group')[['Survived']].sum()
 
+# -----------------------------------------------------------------------------
+# Function to get counts and survival rate
+# -----------------------------------------------------------------------------
+
+def get_counts_and_rate_of_survivors(grouped_df):
+    result = grouped_df.agg(
+        total_survived = ('Survived', 'sum'),
+        total_count = ('Survived', 'count')
+    )
+    result['survival_percentage'] = (
+        (grouped_df['Survived'].mean() * 100)
+        .round(0)
+        .astype(int)
+        .astype(str) + '%'
+    )
+    return result
+
 # Get counts and survival rate by age group
 survivors_by_age_and_count = df_clean.groupby('age_group')[['Survived']].agg(
         total_survived = ("Survived", 'sum'),
