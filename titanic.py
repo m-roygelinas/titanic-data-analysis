@@ -57,5 +57,12 @@ survivors_by_age_and_count = df_clean.groupby('age_group')[['Survived']].agg(
         total_count = ("Survived", 'count'),
         total_rate = ("Survived", 'mean')
     )
-print(survivors_by_age_and_count)
 
+survivors_by_age_and_count['survival_percentage'] = (
+        (survivors_by_age_and_count["total_rate"] * 100)
+        .round(0)
+        .astype(int)
+        .astype(str) + '%'
+    )
+
+print(survivors_by_age_and_count)
