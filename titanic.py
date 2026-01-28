@@ -68,9 +68,26 @@ def get_counts_and_rate_of_survivors(grouped_df):
     )
     return result
 
+# -----------------------------------------------------------------------------
+# Get counts and survival rate by age group and plot graph
+# -----------------------------------------------------------------------------
+
 # Get counts and survival rate by age group
 survivors_by_age_and_count = get_counts_and_rate_of_survivors(
     df_clean.groupby('age_group')
     )
 
 print(survivors_by_age_and_count)
+
+# Plot survivors by age group
+plt.bar(
+    x=survivors_by_age_and_count.index,
+    height=survivors_by_age_and_count['total_survived']
+    )
+plt.xlabel('Age Group')
+plt.ylabel('Number of Survivors')
+plt.title('Survivors by Age Group')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.legend()
+plt.show()
