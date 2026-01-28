@@ -1,10 +1,10 @@
 # titanic-data-analysis
 Analysis of the survival of the Titanic passagers with plot graphs.
 
-Plot graphs were generated as of the results of an analysis on the survival rates by age group, by sex, and by class.
+Visualization plots were generated based on survival rate analysis across three dimensions: age group, sex, and passenger class.
 
 ## Hypothesis
-The priority for lifeboats embarkation were probably as follows. Woman and children first! Then the riches. Forget about third class and old people.
+The analysis examines the hypothesis that lifeboat boarding priority followed a hierarchical pattern: women and children were prioritized first, followed by first-class passengers, with lower survival rates expected among third-class passengers and elderly individuals.
 
 ### Survival rates by age group will display :
 
