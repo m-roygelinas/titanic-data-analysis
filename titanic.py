@@ -32,5 +32,11 @@ survivors_by_age = df.groupby("Age")['Survived'].sum()
 # Replace \N with NaN
 df['Age'] = df['Age'].replace('\\N', np.nan)
 
-# Ensure Age column is numeric
+# Ensure Age column is numeric and deals with errors by converting invalid parsing to NaN
 df['Age'] = pd.to_numeric(df['Age'], errors='coerce')
+
+# Drop rows with missing age values
+if df['Age'].isna().sum() != 0:
+    df_clean = df.dropna(subset=['Age'])
+else:
+    df_clean = df.copy()
