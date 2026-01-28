@@ -125,3 +125,15 @@ survivors_by_class_and_count = get_counts_and_rate_of_survivors(
     )
 print(survivors_by_class_and_count)
 
+# Plot survival percentage by class
+plt.bar(
+    x=survivors_by_class_and_count.index,
+    height=survivors_by_class_and_count['survival_percentage'].str.rstrip('%').astype(int)
+    )
+plt.xlabel('Class')
+plt.ylabel('Percentage of Survivors')
+plt.title('Percentage of Survivors by Class')
+plt.xticks(np.arange(0, 4, 1))
+plt.tight_layout()
+plt.legend()
+plt.show()
