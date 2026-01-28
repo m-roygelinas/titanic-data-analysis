@@ -10,8 +10,8 @@ https://www.agentsfordata.com/csv/sample
 - matplotlib
 
 ## Plots
-![survivors by age group](survivors_by_age_group.png)
+![survivors by age group](img/survivors_by_age_group.png)
 
-![survivors by sex](survivors_by_sex.png)
+![survivors by sex](img/survivors_by_sex.png)
 
-![percentage of survivors by class](percentage_of_survivors_by_class.png)
+![percentage of survivors by class](img/percentage_of_survivors_by_class.png)
