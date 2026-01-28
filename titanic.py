@@ -110,7 +110,6 @@ plt.bar(
 plt.xlabel('Sex')
 plt.ylabel('Number of Survivors')
 plt.title('Survivors by Sex')
-plt.xticks(rotation=45, ha='right')
 plt.tight_layout()
 plt.legend()
 plt.show()
