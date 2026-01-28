@@ -98,8 +98,7 @@ plt.show()
 
 # Get counts and survival rate by sex
 survivors_by_sex_and_count = get_counts_and_rate_of_survivors(
-    df_clean.groupby('Sex'),
-    'Survived'
+    df_clean.groupby('Sex')
     )
 print(survivors_by_sex_and_count)
 
@@ -115,3 +114,14 @@ plt.xticks(rotation=45, ha='right')
 plt.tight_layout()
 plt.legend()
 plt.show()
+
+# -----------------------------------------------------------------------------
+# Get counts and survival rate by class and plot graph
+# -----------------------------------------------------------------------------
+
+# Get counts and survival rate by class
+survivors_by_class_and_count = get_counts_and_rate_of_survivors(
+    df_clean.groupby('Pclass')
+    )
+print(survivors_by_class_and_count)
+
