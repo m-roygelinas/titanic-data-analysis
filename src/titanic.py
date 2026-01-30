@@ -2,8 +2,11 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import datetime as dt
+from pathlib import Path
 
-df = pd.read_csv("data/titanic.csv")
+# Get the directory of the current script, then go up one level to data
+data_path = Path(__file__).parent.parent / "data" / "titanic.csv"
+df = pd.read_csv(data_path)
 
 # -----------------------------------------------------------------------------
 # Get basic info about the dataframe
