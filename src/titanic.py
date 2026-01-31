@@ -44,6 +44,10 @@ if df['Age'].isna().sum() != 0:
 else:
     df_clean = df.copy()
 
+# calculate percentage of missing values in Age column
+missing_age_percentage = (df['Age'].isna().sum() / len(df)) * 100
+print(f"Percentage of missing values in Age column: {missing_age_percentage:.2f}%")
+
 # Define bin edges and labels
 bins = [0, 18, 30, 45, 55, 65, float('inf')]
 labels = ['0-18', '19-30', '31-45', '46-55', '56-65', '66+']
