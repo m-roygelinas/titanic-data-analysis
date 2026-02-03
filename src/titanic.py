@@ -14,6 +14,7 @@ df = pd.read_csv(data_path)
 
 print(df.head())  
 print(df.info())
+print("Number of duplicated rows:", df[df.duplicated()].shape[0])
 
 # -----------------------------------------------------------------------------
 # Basic statistics
