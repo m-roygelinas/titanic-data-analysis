@@ -18,6 +18,7 @@ age_group
 56-65                  11           32                 34%
 66+                     1            8                 12%
 ```
+It is important to note that some of the data related to the age of the passengers was missing. The percentage of missing values in Age column of this dataset is: 19.87%. Nearly a fifth of passengers are excluded from this part of the analysis.
 
 ### Survival rates by sex will display :
 
