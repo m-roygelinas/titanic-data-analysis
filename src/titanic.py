@@ -83,6 +83,46 @@ survivors_by_age_and_count = get_counts_and_rate_of_survivors(
 
 print(survivors_by_age_and_count)
 
+# Pie charts of survivors by age group
+labels = ['Deaths', 'Survivors']
+configure = dict(labels=labels, 
+             autopct='%1.1f%%', # Display percentages on each slice
+             shadow=True,
+             explode=[0, 0.1])  # Explode the second slice
+fig, ax = plt.subplots(2, 3, figsize=(12, 8))  # Create a 2x3 grid of subplots
+
+survivors = survivors_by_age_and_count.loc['0-18', 'total_survived']
+deaths = survivors_by_age_and_count.loc['0-18', 'total_count'] - survivors
+ax[0, 0].pie([deaths, survivors], **configure)
+ax[0,0].set_title('0-18')
+
+survivors = survivors_by_age_and_count.loc['19-30', 'total_survived']
+deaths = survivors_by_age_and_count.loc['19-30', 'total_count'] - survivors
+ax[0, 1].pie([deaths, survivors], **configure)
+ax[0,1].set_title('19-30')
+
+survivors = survivors_by_age_and_count.loc['31-45', 'total_survived']
+deaths = survivors_by_age_and_count.loc['31-45', 'total_count'] - survivors
+ax[0, 2].pie([deaths, survivors], **configure)
+ax[0,2].set_title('31-45')
+
+survivors = survivors_by_age_and_count.loc['46-55', 'total_survived']
+deaths = survivors_by_age_and_count.loc['46-55', 'total_count'] - survivors
+ax[1, 0].pie([deaths, survivors], **configure)
+ax[1,0].set_title('46-55')
+survivors = survivors_by_age_and_count.loc['56-65', 'total_survived']
+deaths = survivors_by_age_and_count.loc['56-65', 'total_count'] - survivors
+ax[1, 1].pie([deaths, survivors], **configure)
+ax[1,1].set_title('56-65')
+
+survivors = survivors_by_age_and_count.loc['66+', 'total_survived']
+deaths = survivors_by_age_and_count.loc['66+', 'total_count'] - survivors
+ax[1, 2].pie([deaths, survivors], **configure)
+ax[1,2].set_title('66+')
+
+plt.suptitle('Survivors by Age Group')
+plt.show()
+
 # Bar chart of survivors by age group
 plt.bar(
     x=survivors_by_age_and_count.index,
