@@ -47,7 +47,7 @@ def get_counts_and_rate_of_survivors(grouped_df):
     return result
 
 # -----------------------------------------------------------------------------
-# Analyze survival rates by age groups and plot graph
+# Data cleaning + Get counts and survival rate by age groups
 # -----------------------------------------------------------------------------
 
 # Replace \N with NaN
@@ -80,7 +80,11 @@ survivors_by_age_and_count = get_counts_and_rate_of_survivors(
     )
 print(survivors_by_age_and_count)
 
+# -----------------------------------------------------------------------------
 # Pie charts of survivors by age group
+# -----------------------------------------------------------------------------
+
+# Pie chart configuration
 labels = ['Deaths', 'Survivors']
 pie_configuration = dict(labels=labels, 
              autopct='%1.1f%%', # Display percentages on each slice
@@ -89,8 +93,10 @@ pie_configuration = dict(labels=labels,
 pie_title_config = dict(fontweight='bold',
                         fontsize=12)
 
+# creating figure and axes
 fig, ax = plt.subplots(2, 3, figsize=(12, 8))  # Create a 2x3 grid of subplots
 
+# Pie charts for each age group
 survivors = survivors_by_age_and_count.loc['0-18', 'total_survived']
 deaths = survivors_by_age_and_count.loc['0-18', 'total_count'] - survivors
 ax[0, 0].pie([deaths, survivors], **pie_configuration)
@@ -110,6 +116,7 @@ survivors = survivors_by_age_and_count.loc['46-55', 'total_survived']
 deaths = survivors_by_age_and_count.loc['46-55', 'total_count'] - survivors
 ax[1, 0].pie([deaths, survivors], **pie_configuration)
 ax[1,0].set_title('46-55', **pie_title_config)
+
 survivors = survivors_by_age_and_count.loc['56-65', 'total_survived']
 deaths = survivors_by_age_and_count.loc['56-65', 'total_count'] - survivors
 ax[1, 1].pie([deaths, survivors], **pie_configuration)
@@ -123,7 +130,10 @@ ax[1,2].set_title('66+', **pie_title_config)
 plt.suptitle('Survivors by Age Group')
 plt.show()
 
+# -----------------------------------------------------------------------------
 # Histogram of survivors by age group
+# -----------------------------------------------------------------------------
+
 survivors_only = df_clean[df_clean['Survived'] == 1]
 plt.hist(survivors_only['age_group'].cat.codes, bins=6, edgecolor='black')
 plt.xlabel('Age Group')
@@ -134,7 +144,7 @@ plt.tight_layout()
 plt.show()
 
 # -----------------------------------------------------------------------------
-# Get counts and survival rate by sex and plot graph
+# Get counts and survival rate by sex and pie chart
 # -----------------------------------------------------------------------------
 
 # Get counts and survival rate by sex
@@ -155,7 +165,7 @@ plt.title('Survivors by Sex')
 plt.show()
 
 # -----------------------------------------------------------------------------
-# Get counts and survival rate by class and plot graph
+# Get counts and survival rate by class and bar chart
 # -----------------------------------------------------------------------------
 
 # Get counts and survival rate by class
