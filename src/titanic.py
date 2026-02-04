@@ -73,66 +73,54 @@ labels = ['0-18', '19-30', '31-45', '46-55', '56-65', '66+']
 # Create age_group column
 df_clean['age_group'] = pd.cut(df_clean['Age'], bins=bins, labels=labels, right=True)
 
-# Group survivors by age group
-survivors_by_age_groups = df_clean.groupby('age_group')[['Survived']].sum()
-
-# Get counts and survival rate by age group
+# Get counts and survival rate by age group:
+# total survivors, total count, and survival percentage for each age group
 survivors_by_age_and_count = get_counts_and_rate_of_survivors(
     df_clean.groupby('age_group')
     )
-
 print(survivors_by_age_and_count)
 
 # Pie charts of survivors by age group
 labels = ['Deaths', 'Survivors']
-configure = dict(labels=labels, 
+pie_configuration = dict(labels=labels, 
              autopct='%1.1f%%', # Display percentages on each slice
              shadow=True,
              explode=[0, 0.1])  # Explode the second slice
+pie_title_config = dict(fontweight='bold',
+                        fontsize=12)
+
 fig, ax = plt.subplots(2, 3, figsize=(12, 8))  # Create a 2x3 grid of subplots
 
 survivors = survivors_by_age_and_count.loc['0-18', 'total_survived']
 deaths = survivors_by_age_and_count.loc['0-18', 'total_count'] - survivors
-ax[0, 0].pie([deaths, survivors], **configure)
-ax[0,0].set_title('0-18')
+ax[0, 0].pie([deaths, survivors], **pie_configuration)
+ax[0,0].set_title('0-18', **pie_title_config)
 
 survivors = survivors_by_age_and_count.loc['19-30', 'total_survived']
 deaths = survivors_by_age_and_count.loc['19-30', 'total_count'] - survivors
-ax[0, 1].pie([deaths, survivors], **configure)
-ax[0,1].set_title('19-30')
+ax[0, 1].pie([deaths, survivors], **pie_configuration)
+ax[0,1].set_title('19-30', **pie_title_config)
 
 survivors = survivors_by_age_and_count.loc['31-45', 'total_survived']
 deaths = survivors_by_age_and_count.loc['31-45', 'total_count'] - survivors
-ax[0, 2].pie([deaths, survivors], **configure)
-ax[0,2].set_title('31-45')
+ax[0, 2].pie([deaths, survivors], **pie_configuration)
+ax[0,2].set_title('31-45', **pie_title_config)
 
 survivors = survivors_by_age_and_count.loc['46-55', 'total_survived']
 deaths = survivors_by_age_and_count.loc['46-55', 'total_count'] - survivors
-ax[1, 0].pie([deaths, survivors], **configure)
-ax[1,0].set_title('46-55')
+ax[1, 0].pie([deaths, survivors], **pie_configuration)
+ax[1,0].set_title('46-55', **pie_title_config)
 survivors = survivors_by_age_and_count.loc['56-65', 'total_survived']
 deaths = survivors_by_age_and_count.loc['56-65', 'total_count'] - survivors
-ax[1, 1].pie([deaths, survivors], **configure)
-ax[1,1].set_title('56-65')
+ax[1, 1].pie([deaths, survivors], **pie_configuration)
+ax[1,1].set_title('56-65', **pie_title_config)
 
 survivors = survivors_by_age_and_count.loc['66+', 'total_survived']
 deaths = survivors_by_age_and_count.loc['66+', 'total_count'] - survivors
-ax[1, 2].pie([deaths, survivors], **configure)
-ax[1,2].set_title('66+')
+ax[1, 2].pie([deaths, survivors], **pie_configuration)
+ax[1,2].set_title('66+', **pie_title_config)
 
 plt.suptitle('Survivors by Age Group')
-plt.show()
-
-# Bar chart of survivors by age group
-plt.bar(
-    x=survivors_by_age_and_count.index,
-    height=survivors_by_age_and_count['total_survived']
-    )
-plt.xlabel('Age Group')
-plt.ylabel('Number of Survivors')
-plt.title('Survivors by Age Group')
-plt.xticks(rotation=45, ha='right')
-plt.tight_layout()
 plt.show()
 
 # Histogram of survivors by age group
@@ -150,21 +138,11 @@ plt.show()
 # -----------------------------------------------------------------------------
 
 # Get counts and survival rate by sex
+# total survivors, total count, and survival percentage for each sex
 survivors_by_sex_and_count = get_counts_and_rate_of_survivors(
     df.groupby('Sex')
     )
 print(survivors_by_sex_and_count)
-
-# Bar chart of survivors by sex
-plt.bar(
-    x=survivors_by_sex_and_count.index,
-    height=survivors_by_sex_and_count['total_survived']
-    )
-plt.xlabel('Sex')
-plt.ylabel('Number of Survivors')
-plt.title('Survivors by Sex')
-plt.tight_layout()
-plt.show()
 
 # Pie chart of survivors by sex
 labels = ['Female', 'Male']
@@ -181,6 +159,7 @@ plt.show()
 # -----------------------------------------------------------------------------
 
 # Get counts and survival rate by class
+# total survivors, total count, and survival percentage for each class
 survivors_by_class_and_count = get_counts_and_rate_of_survivors(
     df.groupby('Pclass')
     )
