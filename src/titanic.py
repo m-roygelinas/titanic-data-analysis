@@ -83,7 +83,7 @@ survivors_by_age_and_count = get_counts_and_rate_of_survivors(
 
 print(survivors_by_age_and_count)
 
-# Plot survivors by age group
+# Bar chart of survivors by age group
 plt.bar(
     x=survivors_by_age_and_count.index,
     height=survivors_by_age_and_count['total_survived']
@@ -95,7 +95,8 @@ plt.xticks(rotation=45, ha='right')
 plt.tight_layout()
 plt.show()
 
-plt.hist(df_clean['age_group'].sort_values(), bins=6)  # Create a histogram with 30 bins
+# Histogram of age groups
+plt.hist(df_clean['age_group'].sort_values(), bins=6)  # Create a histogram with 6 bins
 plt.xlabel('Age Group')
 plt.ylabel('Number of Survivors')
 plt.title('Distribution of Number of Survivors by Age Group')
@@ -111,7 +112,7 @@ survivors_by_sex_and_count = get_counts_and_rate_of_survivors(
     )
 print(survivors_by_sex_and_count)
 
-# Plot survivors by sex
+# Bar chart of survivors by sex
 plt.bar(
     x=survivors_by_sex_and_count.index,
     height=survivors_by_sex_and_count['total_survived']
@@ -120,6 +121,16 @@ plt.xlabel('Sex')
 plt.ylabel('Number of Survivors')
 plt.title('Survivors by Sex')
 plt.tight_layout()
+plt.show()
+
+# Pie chart of survivors by sex
+labels = ['Female', 'Male']
+sizes = survivors_by_sex_and_count['total_survived']
+plt.pie(sizes, labels=labels, 
+        autopct='%1.1f%%', # Display percentages on each slice
+        shadow=True,
+        explode=[0, 0.1])  # Explode the second slice
+plt.title('Survivors by Sex')
 plt.show()
 
 # -----------------------------------------------------------------------------
@@ -132,7 +143,7 @@ survivors_by_class_and_count = get_counts_and_rate_of_survivors(
     )
 print(survivors_by_class_and_count)
 
-# Plot survival percentage by class
+# Bar chart of survival percentage by class
 plt.bar(
     x=survivors_by_class_and_count.index,
     height=survivors_by_class_and_count['survival_percentage'].str.rstrip('%').astype(int)
