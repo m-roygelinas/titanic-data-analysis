@@ -1,5 +1,5 @@
 # titanic-data-analysis
-Analysis of the survival of the Titanic passagers with plot graphs.
+Analysis of the survival of the Titanic passagers with rates and charts.
 
 Visualizations were generated based on survival rate analysis across three dimensions: age group, sex, and passenger class.
 
