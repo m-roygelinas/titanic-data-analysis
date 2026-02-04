@@ -50,7 +50,7 @@ https://www.agentsfordata.com/csv/sample
 - numpy
 - matplotlib
 
-## Bar charts
+## Charts
 ![survivors by age group](img/survivors_by_age_group.png)
 
 ![percentage of survivors by age group pie charts](img/survivors_by_age_groups_pie_charts.png)
