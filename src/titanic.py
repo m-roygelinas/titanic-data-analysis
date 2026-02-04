@@ -95,6 +95,12 @@ plt.xticks(rotation=45, ha='right')
 plt.tight_layout()
 plt.show()
 
+plt.hist(df_clean['age_group'].sort_values(), bins=6)  # Create a histogram with 30 bins
+plt.xlabel('Age Group')
+plt.ylabel('Number of Survivors')
+plt.title('Distribution of Number of Survivors by Age Group')
+plt.show()
+
 # -----------------------------------------------------------------------------
 # Get counts and survival rate by sex and plot graph
 # -----------------------------------------------------------------------------
