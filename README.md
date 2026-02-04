@@ -51,10 +51,16 @@ https://www.agentsfordata.com/csv/sample
 - matplotlib
 
 ## Charts
-![survivors by age group](img/survivors_by_age_group.png)
+<u>Histogram:</u>
+
+![distribution_of_survivors_by_age_group](img/distribution_of_survivors_by_age_group.png)
+
+<u>Pie charts:</u>
 
 ![percentage of survivors by age group pie charts](img/survivors_by_age_groups_pie_charts.png)
 
 ![percentage of survivors by sex](img/percentage_of_survivors_by_sex_pie_chart.png)
+
+<u>Bar chart:</u>
 
 ![percentage of survivors by class](img/percentage_of_survivors_by_class.png)
