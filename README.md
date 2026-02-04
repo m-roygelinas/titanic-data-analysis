@@ -54,11 +54,13 @@ https://www.agentsfordata.com/csv/sample
 <u>Histogram:</u>
 
 ![distribution_of_survivors_by_age_group](img/distribution_of_survivors_by_age_group.png)
+
 *\*Excluding a fifth of the data where age was missing*
 
 <u>Pie charts:</u>
 
 ![percentage of survivors by age group pie charts](img/survivors_by_age_groups_pie_charts.png)
+
 *\*Excluding a fifth of the data where age was missing*
 
 ![percentage of survivors by sex](img/percentage_of_survivors_by_sex_pie_chart.png)
