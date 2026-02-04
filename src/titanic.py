@@ -135,11 +135,14 @@ plt.xticks(rotation=45, ha='right')
 plt.tight_layout()
 plt.show()
 
-# Histogram of age groups
-plt.hist(df_clean['age_group'].sort_values(), bins=6)  # Create a histogram with 6 bins
+# Histogram of survivors by age group
+survivors_only = df_clean[df_clean['Survived'] == 1]
+plt.hist(survivors_only['age_group'].cat.codes, bins=6, edgecolor='black')
 plt.xlabel('Age Group')
 plt.ylabel('Number of Survivors')
-plt.title('Distribution of Number of Survivors by Age Group')
+plt.title('Distribution of Survivors by Age Group')
+plt.xticks(range(6), ['0-18', '19-30', '31-45', '46-55', '56-65', '66+'])
+plt.tight_layout()
 plt.show()
 
 # -----------------------------------------------------------------------------
